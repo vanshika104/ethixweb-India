@@ -17,7 +17,7 @@ An India-specific redesign of [ethixweb.com](https://www.ethixweb.com): a premiu
 client/                 React app (Vite + Tailwind)
   src/pages/            Home, Services, About, Contact, NotFound, admin/{Login,Dashboard} (.jsx)
   src/components/       Header, Footer, Logo, CtaBand, EnquiryForm, Layout
-  src/lib/content.js    All site copy and data (no lorem ipsum)
+  src/lib/content.js    All site copy and data 
 server/                 Express API
   src/routes/           leads.js (public), admin.js (protected)
   src/middleware/       auth, security (origin/JSON guards), errors
@@ -80,15 +80,6 @@ Errors are always JSON: `{ "error": "message", "fieldErrors"?: { field: ["messag
 
 Known limit: rate-limit counters are in memory, so they reset on restart and are per instance. Use a Redis store (`rate-limit-redis`) if you run multiple instances. For heavier abuse, add Cloudflare Turnstile to the form.
 
-## Performance notes (target: PageSpeed 90+ on mobile and desktop)
-
-- No images on the critical path: the hero visual is pure HTML/CSS and the logo is inline SVG
-- Self-hosted variable fonts via Fontsource (no third-party font request); the Devanagari font only downloads when Hindi text is rendered
-- Admin area is code-split and lazy-loaded; public visitors never download it
-- Brotli/gzip compression, immutable one-year caching for hashed assets
-- One short entrance animation, disabled under `prefers-reduced-motion`
-
-Run Lighthouse against the production build (`npm run build && npm start`), not the dev server.
 
 ## Design rationale
 
