@@ -122,11 +122,4 @@ The India angle is a proposal built from the live site. Before launch, confirm:
 - **Logo:** an inline SVG wordmark is used so the project works out of the box. Replace `client/src/components/Logo.jsx` with the official artwork (`/public/ethixweb-logo.webp`)
 - **Featured work** links to the real case studies on ethixweb.com; add Indian client work as it exists
 
-## Pre-submission checklist
 
-- [ ] Submit the form: lead appears in MongoDB and in `/admin`
-- [ ] Try invalid input, a filled honeypot, and 6 rapid submissions (expect 422 / silent success / 429)
-- [ ] `/admin` redirects to login when signed out; `/api/admin/leads` returns 401
-- [ ] Lighthouse on the production build: mobile and desktop
-- [ ] Browser console is clean on every page
-- [ ] `git status` shows no `.env` files
