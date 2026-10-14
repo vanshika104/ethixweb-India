@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #d5192b;
+  --color-brand-deep: #a10f1f;
+  --color-brand-tint: #fdeced;
+  --color-ink: #1c1517;
+  --color-ink-soft: #5b4f52;
+  --color-wash: #f8f4f2;
+  --color-line: #e7dedb;
+  --color-ok: #1f7a4d;
+
+  --font-display: "Bricolage Grotesque Variable", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Noto Sans Variable", "Segoe UI", system-ui, sans-serif;
+  --font-hindi: "Noto Sans Devanagari Variable", "Noto Sans Variable", sans-serif;
+
+  --animate-pop: pop 0.45s ease forwards;
+  @keyframes pop {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+@layer base {
+  html { scroll-padding-top: 5rem; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-white font-sans text-[1.0625rem] leading-relaxed text-ink antialiased; }
+  h1, h2, h3 { @apply font-display leading-[1.08] tracking-tight; }
+  :focus-visible { outline: 3px solid var(--color-brand); outline-offset: 3px; border-radius: 4px; }
+}
+
+@layer components {
+  .wrap { width: min(100% - 2.5rem, 1180px); margin-inline: auto; }
+  .section-pad { padding-block: clamp(4rem, 8vw, 7rem); }
+  .lead { @apply max-w-xl text-[1.175rem] text-ink-soft; }
+  .h-xl { @apply text-[clamp(2.5rem,7vw+0.5rem,4.75rem)] font-bold; }
+  .h-lg { @apply text-[clamp(1.9rem,3.4vw+0.6rem,3rem)] font-bold; }
+  .h-page { @apply text-[clamp(2.2rem,5vw+0.4rem,3.9rem)] font-bold max-w-[18ch]; }
+
+  .btn { @apply inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-transparent px-6 py-3 text-base leading-none font-semibold no-underline transition-colors disabled:cursor-progress disabled:opacity-70; }
+  .btn-primary { @apply bg-brand text-white hover:bg-brand-deep; }
+  .btn-ghost { @apply border-line bg-transparent text-ink hover:border-ink; }
+  .btn-light { @apply bg-white text-brand-deep hover:bg-brand-tint; }
+  .btn-outline-light { @apply border-white/70 text-white hover:bg-white/10; }
+  .btn-sm { @apply min-h-10 px-4 py-2 text-sm; }
+
+  .input { @apply w-full rounded-[10px] border-[1.5px] border-[#cfc3bf] bg-white px-3.5 py-3 text-base text-ink focus:border-brand focus:outline-3 focus:outline-brand/20 focus:outline-offset-0 aria-[invalid=true]:border-brand; }
+  .field-error { @apply text-sm font-medium text-brand-deep; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
